@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-product-management-connectBE'`, () => {
+  it(`should have as title 'angular-product-management-update'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-product-management-connectBE');
+    expect(app.title).toEqual('angular-product-management-update');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-product-management-connectBE app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-product-management-update app is running!');
   });
 });
