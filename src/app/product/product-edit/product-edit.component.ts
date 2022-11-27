@@ -30,11 +30,20 @@ export class ProductEditComponent implements OnInit {
   ngOnInit() {
   }
   getProduct(id: number) {
-    return this.productService.findById(id);
+    return this.productService.findById(id).subscribe(product => {
+      this.productForm = new FormGroup({
+        name: new FormControl(product.name),
+        price: new FormControl(product.price),
+        description: new FormControl(product.description)
+      });
+    });
   }
   updateProduct(id: number) {
     const product = this.productForm.value;
-    this.productService.updateProduct(id, product);
-    alert('Cập nhật thành công');
+    this.productService.updateProduct(id, product).subscribe(() => {
+      alert('Cập nhật thành công');
+    }, e => {
+      console.log(e);
+    });
   }
 }

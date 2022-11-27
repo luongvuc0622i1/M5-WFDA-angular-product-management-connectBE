@@ -39,11 +39,20 @@ export class ProductDeleteComponent {
   }
 
   getProduct(id: number) {
-    return this.productService.findById(id);
+    return this.productService.findById(id).subscribe(product => {
+      this.productForm = new FormGroup({
+        name: new FormControl(product.name),
+        price: new FormControl(product.price),
+        description: new FormControl(product.description)
+      })
+    })
   }
 
   deleteProduct(id: number) {
-    this.productService.deleteProduct(id);
-    this.router.navigate(['/product/list']);
+    this.productService.deleteProduct(id).subscribe(() => {
+      this.router.navigate(['/product/list']);
+    }, e => {
+      console.log(e);
+    });
   }
 }
